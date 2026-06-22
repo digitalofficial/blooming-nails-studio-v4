@@ -86,11 +86,10 @@ body {
   50% { box-shadow: 0 0 30px rgba(236, 72, 153, 0.6), 0 0 80px rgba(236, 72, 153, 0.2); }
 }
 
-/* --- Sticky Hero Section --- */
+/* --- Hero Section --- */
 .hero-sticky {
-  position: sticky;
-  top: 0;
-  height: 100vh;
+  position: relative;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -104,14 +103,7 @@ body {
   position: relative;
 }
 
-/* Scroll-driven hero fade: linked to scroll progress */
-@supports (animation-timeline: scroll()) {
-  .hero-fade-target {
-    animation: fade-out-hero linear both;
-    animation-timeline: scroll();
-    animation-range: 0vh 60vh;
-  }
-}
+/* Hero content (no scroll-driven animation) */
 
 /* --- Glow Orbs --- */
 .orb {

@@ -97,7 +97,7 @@ export default function Home() {
       </nav>
 
       {/* ==================== HERO (Sticky) ==================== */}
-      <section id="hero" className="relative h-[200vh]">
+      <section id="hero" className="relative">
         <div className="hero-sticky">
           {/* Background image */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
