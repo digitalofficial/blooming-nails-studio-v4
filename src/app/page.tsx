@@ -24,21 +24,25 @@ const gallery = [
     label: "French",
     desc: "Timeless elegance",
     gradient: "from-pink-500/20 via-white/5 to-transparent",
+    image: "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&h=400&fit=crop",
   },
   {
     label: "Ombre",
     desc: "Seamless color fade",
     gradient: "from-purple-500/20 via-pink-500/10 to-transparent",
+    image: "https://images.unsplash.com/photo-1632345031435-8727f6897d53?w=600&h=400&fit=crop",
   },
   {
     label: "Abstract",
     desc: "Bold artistic lines",
     gradient: "from-orange-400/15 via-pink-500/10 to-transparent",
+    image: "https://images.unsplash.com/photo-1607779097040-26e80aa78e66?w=600&h=400&fit=crop",
   },
   {
     label: "Floral",
     desc: "Garden on your nails",
     gradient: "from-green-400/10 via-pink-500/15 to-transparent",
+    image: "https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=600&h=400&fit=crop",
   },
 ];
 
@@ -95,12 +99,22 @@ export default function Home() {
       {/* ==================== HERO (Sticky) ==================== */}
       <section id="hero" className="relative h-[200vh]">
         <div className="hero-sticky">
+          {/* Background image */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=1600&h=900&fit=crop&crop=center"
+            alt="Professional nail art manicure in a modern salon"
+            className="absolute inset-0 w-full h-full object-cover"
+            fetchPriority="high"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0D0810]/80 via-[#0D0810]/60 to-[#0D0810]/90" />
+
           {/* Glow orbs */}
           <div className="orb orb-pink" />
           <div className="orb orb-lilac" />
 
           {/* Content fades out on scroll */}
-          <div className="hero-content hero-fade-target px-6">
+          <div className="hero-content hero-fade-target px-6 relative z-10">
             <div className="mb-8">
               <Logo size={80} className="mx-auto" />
             </div>
@@ -187,31 +201,10 @@ export default function Home() {
                 className="gallery-block slide-up"
                 style={{ transitionDelay: `${i * 0.1}s` }}
               >
-                <div className="gallery-block-inner">
-                  {/* Abstract nail art representation */}
-                  <div
-                    className={`w-full h-full bg-gradient-to-br ${item.gradient} flex items-center justify-center`}
-                  >
-                    <div className="flex flex-col items-center gap-3">
-                      {/* Stylized nail shapes */}
-                      <div className="flex gap-1">
-                        {[...Array(5)].map((_, j) => (
-                          <div
-                            key={j}
-                            className="w-5 h-10 rounded-t-full"
-                            style={{
-                              background: `linear-gradient(to bottom, rgba(236,72,153,${0.15 + j * 0.08}), rgba(192,132,252,${0.1 + j * 0.06}))`,
-                              transform: `rotate(${(j - 2) * 6}deg)`,
-                              height: `${32 + Math.abs(j - 2) * -4 + 8}px`,
-                            }}
-                          />
-                        ))}
-                      </div>
-                      <span className="text-muted/60 text-xs uppercase tracking-widest mt-2">
-                        {item.label} Style
-                      </span>
-                    </div>
-                  </div>
+                <div className="gallery-block-inner relative overflow-hidden">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={item.image} alt={`${item.label} nail art style`} className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+                  <div className={`absolute inset-0 bg-gradient-to-t ${item.gradient} from-[#0D0810]/70 to-transparent`} />
                 </div>
                 <div className="gallery-label">
                   <h3 className="font-display font-bold text-xl text-text">
